@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>檔案庫導航</title>
+  <title>檔案導航首頁</title>
   <style>
     body { font-family: system-ui, -apple-system, sans-serif; margin: 20px; background: #fafafa; color: #333; line-height: 1.6; }
     header { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #eee; }
@@ -23,34 +23,34 @@
 <body>
 
   <header>
-    <h2 id="title">商品分類導航</h2>
-    <button id="back-btn" class="btn hidden" onclick="showCategories()">← 返回分類列表</button>
+    <h2 id="title">檔案分類導航</h2>
+    <button id="back-btn" class="btn hidden" onclick="showCategories()">← 返回日期列表</button>
   </header>
 
   <!-- 首頁：分類列表 -->
   <ul id="category-list">
     <li>
-      <a href="#" onclick="showGallery('cat1'); return false;">📂 系列 A - 經典商品 (PDF / 圖片)</a>
+      <a href="#" onclick="showGallery('class H1'); return false;">Class H1 homework</a>
     </li>
     <li>
-      <a href="#" onclick="showGallery('cat2'); return false;">📂 系列 B - 季節限定</a>
+      <a href="#" onclick="showGallery('products'); return false;">nothing</a>
     </li>
   </ul>
 
   <!-- 分類 1 的檔案清單 -->
   <ul id="cat1" class="hidden gallery-group">
     <li>
-      <a href="homework/cat1/01.pdf" target="_blank">📄 01.pdf - 產品規格書 (點擊開啟)</a>
+      <a href="homework/260721/0.pdf" target="_blank">homework260721.pdf</a>
     </li>
     <li>
-      <a href="homework/cat1/02.jpg" target="_blank">🖼️ 02.jpg - 商品高清圖 (點擊開啟)</a>
+      <a href="homework/260724/0.pdf" target="_blank">homework260724.pdf</a>
     </li>
   </ul>
 
   <!-- 分類 2 的檔案清單 -->
   <ul id="cat2" class="hidden gallery-group">
     <li>
-      <a href="homework/cat2/01.pdf" target="_blank">📄 01.pdf - 季節目錄 (點擊開啟)</a>
+      <a href="homework/260724/0.pdf" target="_blank">homework260724</a>
     </li>
   </ul>
 
