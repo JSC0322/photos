@@ -3,25 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>商品圖庫導航</title>
+  <title>檔案庫導航</title>
   <style>
-    body { font-family: sans-serif; margin: 20px; background: #fafafa; color: #333; }
-    a { color: #0066cc; text-decoration: none; }
-    a:hover { text-underline-offset: 3px; text-decoration: underline; }
+    body { font-family: system-ui, -apple-system, sans-serif; margin: 20px; background: #fafafa; color: #333; line-height: 1.6; }
+    header { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #eee; }
+    h2 { margin: 0 0 10px 0; }
+    .btn { background: #0066cc; color: #fff; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-size: 14px; }
+    .btn:hover { background: #0052a3; }
     
-    /* 導航標頭 */
-    header { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ccc; }
-    .btn { background: #e0e0e0; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; }
+    /* 清單排版 */
+    ul { list-style-type: none; padding: 0; margin: 0; }
+    li { background: #fff; border: 1px solid #e0e0e0; margin-bottom: 8px; border-radius: 6px; }
+    li a, li .cat-title { display: block; padding: 12px 16px; color: #0066cc; text-decoration: none; font-weight: 500; }
+    li a:hover { background: #f0f7ff; border-radius: 6px; }
     
-    /* 網格排列 */
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
-    
-    /* 外觀卡片 */
-    .item { border: 1px solid #ddd; background: #fff; padding: 10px; border-radius: 6px; text-align: center; }
-    .item img { width: 100%; height: 150px; object-fit: cover; background: #eee; display: block; margin-bottom: 8px; }
-    
-    /* 隱藏區塊 */
-    .hidden { display: none; }
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
@@ -31,73 +27,51 @@
     <button id="back-btn" class="btn hidden" onclick="showCategories()">← 返回分類列表</button>
   </header>
 
-  <!-- 分類列表區塊 -->
-  <div id="category-list" class="grid">
-    
-    <!-- 分類 1 -->
-    <div class="item" onclick="showGallery('cat1')" style="cursor:pointer;">
-      <img src="homework/cat1/01.jpg" alt="分類A" onerror="this.src='https://via.placeholder.com/200x150?text=No+Cover'">
-      <strong>系列 A - 經典冰品</strong>
-    </div>
+  <!-- 首頁：分類列表 -->
+  <ul id="category-list">
+    <li>
+      <a href="#" onclick="showGallery('cat1'); return false;">📂 系列 A - 經典商品 (PDF / 圖片)</a>
+    </li>
+    <li>
+      <a href="#" onclick="showGallery('cat2'); return false;">📂 系列 B - 季節限定</a>
+    </li>
+  </ul>
 
-    <!-- 分類 2 -->
-    <div class="item" onclick="showGallery('cat2')" style="cursor:pointer;">
-      <img src="homework/cat2/01.jpg" alt="分類B" onerror="this.src='https://via.placeholder.com/200x150?text=No+Cover'">
-      <strong>系列 B - 季節限定</strong>
-    </div>
+  <!-- 分類 1 的檔案清單 -->
+  <ul id="cat1" class="hidden gallery-group">
+    <li>
+      <a href="homework/cat1/01.pdf" target="_blank">📄 01.pdf - 產品規格書 (點擊開啟)</a>
+    </li>
+    <li>
+      <a href="homework/cat1/02.jpg" target="_blank">🖼️ 02.jpg - 商品高清圖 (點擊開啟)</a>
+    </li>
+  </ul>
 
-  </div>
-
-  <!-- 分類 1 的圖片區塊 -->
-  <div id="cat1" class="grid hidden gallery-group">
-    <div class="item">
-      <a href="homework/cat1/01.jpg" target="_blank">
-        <img src="homework/cat1/01.jpg" alt="圖片 1">
-        <span>01.jpg (開啟原圖)</span>
-      </a>
-    </div>
-    <div class="item">
-      <a href="homework/cat1/02.jpg" target="_blank">
-        <img src="homework/cat1/02.jpg" alt="圖片 2">
-        <span>02.jpg (開啟原圖)</span>
-      </a>
-    </div>
-  </div>
-
-  <!-- 分類 2 的圖片區塊 -->
-  <div id="cat2" class="grid hidden gallery-group">
-    <div class="item">
-      <a href="homework/cat2/01.jpg" target="_blank">
-        <img src="homework/cat2/01.jpg" alt="圖片 1">
-        <span>01.jpg (開啟原圖)</span>
-      </a>
-    </div>
-  </div>
+  <!-- 分類 2 的檔案清單 -->
+  <ul id="cat2" class="hidden gallery-group">
+    <li>
+      <a href="homework/cat2/01.pdf" target="_blank">📄 01.pdf - 季節目錄 (點擊開啟)</a>
+    </li>
+  </ul>
 
   <script>
     function showGallery(catId) {
-      // 隱藏首頁分類
       document.getElementById('category-list').classList.add('hidden');
       
-      // 隱藏所有圖庫，只顯示點擊的那一個
       const galleries = document.querySelectorAll('.gallery-group');
       galleries.forEach(el => el.classList.add('hidden'));
       document.getElementById(catId).classList.remove('hidden');
 
-      // 顯示返回按鈕
       document.getElementById('back-btn').classList.remove('hidden');
-      document.getElementById('title').innerText = '圖片導航';
+      document.getElementById('title').innerText = '檔案清單';
     }
 
     function showCategories() {
-      // 顯示首頁分類
       document.getElementById('category-list').classList.remove('hidden');
 
-      // 隱藏所有圖庫區塊
       const galleries = document.querySelectorAll('.gallery-group');
       galleries.forEach(el => el.classList.add('hidden'));
 
-      // 隱藏返回按鈕
       document.getElementById('back-btn').classList.add('hidden');
       document.getElementById('title').innerText = '商品分類導航';
     }
