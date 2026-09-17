@@ -1,1 +1,1 @@
-# This is my Maple Leaf Education school homework space
+# This is my photo dictionary.
